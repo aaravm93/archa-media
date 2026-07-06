@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aarav Manoly - Portfolio</title>
+    <!-- Combined Google Fonts Sheet -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;900&family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <!-- Main External CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>  
+<body>
+    <header class="photo-edit-header">
+      <a class="back-btn" href="index.html">Back to Portfolio</a>
+      <div>
+        <div class="title">Electronics & Embedded Systems</div>
+        <div class="subtitle">Practical hardware builds, embedded control systems, and workflow-driven microcontroller development.</div>
+      </div>
+    </header>
+  <div class="wrap">
+    <main>
+      <section class="hero-card intro">
+        <p>Embedded systems work that combines ESP32, Arduino-class hardware, robotics, and efficient power and software integration. This page highlights the strongest electronics projects, development workflows, and future directions.</p>
+        <nav class="anchor-list" aria-label="Jump to electronics sections">
+          <a href="#diy">DIY Hardware</a>
+          <a href="#esp">ESP32 RC Systems</a>
+          <a href="#platformio">PlatformIO & Encoders</a>
+        </nav>
+      </section>
+
+      <section id="diy" class="content-section" aria-labelledby="diy-title">
+        <h2 id="diy-title">Embedded Systems</h2>
+        <div class="meta">Microcontrollers • ESP32 • Arduino • Wireless communication </div>
+        <div class="section-flex">
+          <div class="section-grid">
+            <div class="panel">
+              <h3>Overview</h3>
+              <p>Projects that explore power integration, sensor systems, and reliable hardware design. The focus is on clear build layouts and systems that work consistently in real environments.</p>
+            </div>
+            <div class="panel">
+              <h3>Notable examples</h3>
+              <p>- Custom RC car with motor control and lighting.<br>- Encoder-based control system for motion input.<br>- Modular sensor assemblies for rapid testing.</p>
+            </div>
+            <div class="panel">
+              <h3>Materials</h3>
+              <div class="tech-list">
+                <span class="chip">LiPo power</span>
+                <span class="chip">DC motors</span>
+                <span class="chip">Servo control</span>
+                <span class="chip">Breadboard wiring</span>
+              </div>
+            </div>
+          </div>
+          <div class="carousel">
+            <div class="carousel-track">
+              <img class="carousel-item active" src="images/img1.JPG" alt="Custom electronics and hardware build on a workbench">
+              <img class="carousel-item" src="images/img2.JPG" alt="Back view of a microcontroller based RC chassis and wiring">
+              <img class="carousel-item" src="images/img3.JPG" alt="Close-up of a sensor and actuator interface in a project build">
+            </div>
+            <div class="carousel-controls">
+              <button type="button" onclick="prevSlide()">‹</button>
+              <button type="button" onclick="nextSlide()">›</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="esp" class="content-section" aria-labelledby="esp-title">
+        <h2 id="esp-title">ESP32 RC Systems</h2>
+        <div class="meta">Wireless control • Actuator coordination • Power evaluation</div>
+        <div class="section-flex">
+          <div class="section-grid">
+            <div class="panel">
+              <h3>Project</h3>
+              <p>ESP32-based RC vehicle control with drive motor, steering servo, LED systems, and a compact power design that evaluates battery options for safe operation.</p>
+            </div>
+            <div class="panel">
+              <h3>Focus areas</h3>
+              <p>Embedded coordination of multiple outputs, clean control mapping, current-aware power architecture, and firmware stability.</p>
+            </div>
+            <div class="panel">
+              <h3>Core skills</h3>
+              <div class="skills-list">
+                <span class="chip">ESP32 firmware</span>
+                <span class="chip">Motor control</span>
+                <span class="chip">Servo systems</span>
+                <span class="chip">Power management</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="platformio" class="content-section" aria-labelledby="platformio-title">
+        <h2 id="platformio-title">PlatformIO & Encoders</h2>
+        <div class="meta">Development flow • Embedded tooling • Motion feedback</div>
+        <div class="section-flex">
+          <div class="section-grid">
+            <div class="panel">
+              <h3>Workflow</h3>
+              <p>PlatformIO setup on Linux to manage Arduino and ESP builds, with structured source folders, debugging flags, and USB serial configuration.</p>
+            </div>
+            <div class="panel">
+              <h3>Encoder system</h3>
+              <p>Encoder-based input and control sensing used to add motion feedback and more precise physical control to embedded projects.</p>
+            </div>
+            <div class="panel">
+              <h3>Tools</h3>
+              <div class="ideas-list">
+                <span class="chip">Linux shell</span>
+                <span class="chip">PlatformIO</span>
+                <span class="chip">Serial debug</span>
+                <span class="chip">Firmware flags</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div id="carouselLightbox" class="lightbox-overlay" aria-hidden="true">
+      <button type="button" class="lightbox-close" aria-label="Close lightbox">×</button>
+      <button type="button" class="lightbox-prev" aria-label="Previous image">‹</button>
+      <button type="button" class="lightbox-next" aria-label="Next image">›</button>
+      <div class="lightbox-body">
+        <img class="lightbox-image" src="" alt="" />
+        <div class="lightbox-caption"></div>
+      </div>
+    </div>
+
+    <footer>
+      <p>Electronics, embedded systems and hardware workflows.</p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
