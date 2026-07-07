@@ -1,3 +1,45 @@
+const button = document.getElementById("contactButton");
+const title = button.querySelector(".button-title");
+const subtitle = button.querySelector(".button-subtitle");
+
+const email = "aarav.manoly@gmail.com";
+
+button.addEventListener("click", async () => {
+    try {
+        await navigator.clipboard.writeText(email);
+
+        // Animate out
+        title.classList.add("text-hidden");
+        subtitle.classList.add("text-hidden");
+
+        // Swap text after fade out
+        setTimeout(() => {
+            title.textContent = "✓Copied!";
+            subtitle.textContent = "Email address copied";
+
+            title.classList.remove("text-hidden");
+            subtitle.classList.remove("text-hidden");
+        }, 250);
+
+        // Return to original after 2 seconds
+        setTimeout(() => {
+            title.classList.add("text-hidden");
+            subtitle.classList.add("text-hidden");
+
+            setTimeout(() => {
+                title.textContent = "Contact Me";
+                subtitle.textContent = "Click to copy email";
+
+                title.classList.remove("text-hidden");
+                subtitle.classList.remove("text-hidden");
+            }, 250);
+
+        }, 2000);
+
+    } catch (err) {
+        console.error(err);
+    }
+});
 let currentSlide = 0;
 let slides = [];
 

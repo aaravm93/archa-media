@@ -3,23 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aarav Manoly - Portfolio</title>
+    <title>ARCHA MEDIA</title>
     <!-- Combined Google Fonts Sheet -->
     <link rel="preconnect" href="https://googleapis.com">
     <link rel="preconnect" href="https://gstatic.com" crossorigin>
-    <link href="https://googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;900&family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;900&family=Rubik:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
     <!-- Main External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header class="site-header">
         <div class="hero-content">
-            <p class="meta">Robotics · Embedded systems · Design · Learning</p>
-            <h1>Aarav Manoly</h1>
-            <p class="hero-description">A practical maker focused on electronics, software, and visual systems. This portfolio shares clean work, dependable workflows, and thoughtful project structure.</p>
+            <p class="meta">Electronics · Music · Art · Learning · Design</p>
+            <h1>ARCHA MEDIA</h1>
+            <p class="hero-description">High school student passionate about technology and creativity.</p>
             <div class="hero-actions">
                 <a href="#about" class="button">About this work</a>
-                <a href="mailto:aarav.manoly@gmail.com" class="button button-secondary">Contact me</a>
+                <button class="button button-secondary copy-email" id="contactButton">
+                    <span class="button-title">Contact Me</span>
+                    <span class="button-subtitle">Click to copy email</span>
+                </button>
             </div>
         </div>
     </header>
@@ -245,5 +248,6 @@
             }).catch(function(){ el.textContent = 'Last updated: (unknown) — update manually'; });
         })();
     </script>
+<script src="script.js"></script>
 </body>
 </html>
