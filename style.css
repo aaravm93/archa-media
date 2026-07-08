@@ -18,7 +18,7 @@
     --molten-lava: #751006;
 
     --bg-gradient: linear-gradient(135deg, var(--midnight-violet) 0%, var(--midnight-violet-2) 100%);
-    --header-gradient: linear-gradient(135deg, var(--night-bordeaux) 0%, var(--night-bordeaux-2) 100%);
+    --header-gradient: linear-gradient(145deg, var(--night-bordeaux) 0%, var(--molten-lava) 100%);
     --accent-gradient: linear-gradient(135deg, var(--black-cherry) 0%, var(--dark-garnet) 100%);
     --sidebar-gradient: linear-gradient(135deg, var(--midnight-violet-2) 0%, var(--night-bordeaux) 100%);
     --sidebar-hover-gradient: linear-gradient(135deg, var(--molten-lava) 0%, var(--dark-garnet) 100%);
@@ -594,15 +594,17 @@ section h2 {
 section h2 a {
     color: var(--color-light);
     text-decoration: none;
-    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
     cursor: pointer;
+    text-shadow: 1px 1px 2px color: var(--midnight-violet);
+    transition: all 0.3s ease;
     display: inline-block;
 }
 
 section h2 a:hover {
     transform: translateY(-2px) scale(1.05);
-    color: var(--color-scarlet);
-    text-shadow: 0 8px 24px rgba(117, 16, 6, 0.28);
+    text-shadow: 
+        1px 2px 3px var(--midnight-violet), 
+        4px 12px 24px var(--midnight-violet);
 }
 
 .interests-grid {
