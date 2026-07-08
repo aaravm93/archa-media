@@ -41,7 +41,7 @@
     --shadow-hover: 0 18px 48px rgba(0, 0, 0, 0.42);
     --transition-base: 220ms cubic-bezier(0.2, 0.9, 0.2, 1);
     --surface-card: rgba(60, 5, 24, 0.94);
-    --surface-panel: rgba(74, 8, 20, 0.96);
+    --surface-panel: linear-gradient(190deg, var(--night-bordeaux) 0%, var(--molten-lava) 100%);
     --surface-subtle: rgba(31, 0, 33, 0.32);
     --border-soft: rgba(117, 16, 6, 0.22);
     --border-stronger: rgba(117, 16, 6, 0.34);
@@ -238,13 +238,13 @@ header::before {
 }
 
 .content-section p a {
-    color: var(--color-scarlet);
+    color: var(--color-light);
     text-decoration: none;
-    border-bottom: var(--border-width) solid var(--border-soft);
+    transition: all 0.2 ease;
 }
 
 .content-section p a:hover {
-    border-color: var(--border-stronger);
+    text-decoration: underline;
 }
 
 nav.anchor-list {
@@ -285,6 +285,15 @@ nav.anchor-list a:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-soft);
     border-color: var(--border-stronger);
+}
+
+.panel h1 {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 16px;
 }
 
 .panel h3 {
@@ -1014,7 +1023,7 @@ footer p {
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 42px;
     z-index: 200;
 }
 
@@ -1030,13 +1039,12 @@ footer p {
     color: var(--color-light);
     text-decoration: none;
     font-size: 10px;
-    transition: transform var(--transition-base), box-shadow var(--transition-base), background-color var(--transition-base), border-color var(--transition-base);
-    border: var(--border-width) solid var(--border-soft);
+    transition: all 0.3s ease;
     box-shadow: var(--shadow-soft);
 }
 
 .social-link:hover {
-    transform: rotate(0deg) translateY(-3px) scale(1.06);
+    transform: rotate(0deg) translateY(-3px) scale(1.1);
     background: var(--color-scarlet);
     color: var(--color-light);
     box-shadow: var(--shadow-strong);
