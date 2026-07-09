@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - ARCHA MEDIA</title>
+    <!-- Combined Google Fonts Sheet -->
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&family=Poppins:wght@300;400;500;600;700;900&family=Rubik:wght@300;400;500;700;900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="photo-edit-header" style="font-family: 'Poppins', 'Plus Jakarta Sans', 'Montserrat', 'Rubik', sans-serif;">
+        <a class="back-btn" href="index.html">Back to Portfolio</a>
+        <div>
+            <div class="title">Contact</div>
+            <div class="subtitle">Have a question, project idea, or just want to connect? Reach out below.</div>
+        </div>
+    </header>
+
+    <section id="contact" class="content-section" aria-labelledby="contact-title">
+        <h2 id="contact-title">Get in Touch</h2>
+        <div class="meta">I'd love to hear from you</div>
+
+        <div class="section-flex">
+            <div class="section-grid">
+                <div class="panel">
+                    <!-- Contact Form -->
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="message">Your Message <span style="color: red;">*</span></label>
+                            <textarea id="message" name="message" rows="5" placeholder="Type your message here..." required style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; font-size: 16px; resize: vertical; background-color: #dfb7b7;"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Your Name <span style="color: #888; font-weight: 400;">(optional)</span></label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; font-size: 16px; background-color: #dfb7b7;">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Your Email <span style="color: #888; font-weight: 400;">(optional)</span></label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" style="width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; font-size: 16px; background-color: #dfb7b7;">
+                            <div style="font-size: 0.85em; color: #888; margin-top: 5px;">Only needed if you want a reply. Your email will not be shared.</div>
+                        </div>
+
+                        <button type="submit" style="background: #007bff; color: white; padding: 14px 32px; border: none; border-radius: 4px; font-family: 'Poppins', sans-serif; font-size: 18px; font-weight: 600; cursor: pointer; width: 100%; margin-top: 10px;">Send Message</button>
+                        <div id="form-status" style="margin-top: 15px; font-family: 'Poppins', sans-serif; font-weight: 500; text-align: center;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

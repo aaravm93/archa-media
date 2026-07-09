@@ -1,0 +1,29 @@
+{
+  "name": "archa-media",
+  "version": "1.0.0",
+  "description": "",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aaravm93/archa-media.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aaravm93/archa-media/issues"
+  },
+  "homepage": "https://github.com/aaravm93/archa-media#readme",
+  "dependencies": {
+    "google-form-responder": "^1.0.0"
+  },
+  "devDependencies": {
+    "vite": "^8.1.4"
+  }
+}
