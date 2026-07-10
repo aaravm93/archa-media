@@ -1,5 +1,4 @@
-// === IMPORT CSS ===
-import './style.css';
+
 
 // ============================================
 // CAROUSEL FUNCTIONALITY
