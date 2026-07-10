@@ -1,5 +1,3 @@
-
-
 // ============================================
 // CAROUSEL FUNCTIONALITY
 // ============================================
@@ -8,25 +6,25 @@ let currentSlide = 0;
 let slides = [];
 
 function showSlide(index) {
-  if (!slides.length) return;
+    if (!slides.length) return;
 
-  slides.forEach((img, i) => {
-    img.classList.toggle("active", i === index);
-  });
+    slides.forEach((img, i) => {
+        img.classList.toggle('active', i === index);
+    });
 }
 
 function nextSlide() {
-  if (!slides.length) return;
+    if (!slides.length) return;
 
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
+    currentSlide = (currentSlide + 1) % slides.length;
+    showSlide(currentSlide);
 }
 
 function prevSlide() {
-  if (!slides.length) return;
+    if (!slides.length) return;
 
-  currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-  showSlide(currentSlide);
+    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(currentSlide);
 }
 
 // ============================================
@@ -45,10 +43,10 @@ const ENTRY_MESSAGE = 'entry.345317678';
 // DOM CONTENT LOADED - INITIALIZE EVERYTHING
 // ============================================
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener('DOMContentLoaded', () => {
     // ---------- CAROUSEL INIT ----------
-    slides = Array.from(document.querySelectorAll(".carousel-item"));
-    const lightbox = document.getElementById("carouselLightbox");
+    slides = Array.from(document.querySelectorAll('.carousel-item'));
+    const lightbox = document.getElementById('carouselLightbox');
     const pageHeader = document.querySelector('.photo-edit-header');
 
     let lightboxImage = null;
@@ -59,12 +57,12 @@ window.addEventListener("DOMContentLoaded", () => {
     let fullscreenButton = null;
 
     if (lightbox) {
-        lightboxImage = lightbox.querySelector(".lightbox-image");
-        lightboxCaption = lightbox.querySelector(".lightbox-caption");
-        closeButton = lightbox.querySelector(".lightbox-close");
-        prevButton = lightbox.querySelector(".lightbox-prev");
-        nextButton = lightbox.querySelector(".lightbox-next");
-        fullscreenButton = lightbox.querySelector(".lightbox-fullscreen");
+        lightboxImage = lightbox.querySelector('.lightbox-image');
+        lightboxCaption = lightbox.querySelector('.lightbox-caption');
+        closeButton = lightbox.querySelector('.lightbox-close');
+        prevButton = lightbox.querySelector('.lightbox-prev');
+        nextButton = lightbox.querySelector('.lightbox-next');
+        fullscreenButton = lightbox.querySelector('.lightbox-fullscreen');
     }
 
     function updateLightboxImage(index) {
@@ -74,19 +72,23 @@ window.addEventListener("DOMContentLoaded", () => {
         currentSlide = index;
         lightboxImage.src = img.src;
         lightboxImage.alt = img.alt;
-        lightboxCaption.textContent = img.alt || "Full screen view of the selected project image.";
+        lightboxCaption.textContent = img.alt || 'Full screen view of the selected project image.';
     }
 
     function openLightbox(index) {
         if (!lightbox || !lightboxImage || !lightboxCaption) return;
 
         updateLightboxImage(index);
-        lightbox.classList.add("active");
-        lightbox.setAttribute("aria-hidden", "false");
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
         document.body.classList.add('lightbox-open');
+
         if (pageHeader) {
             pageHeader.classList.add('hidden-during-lightbox');
         }
+
+        lightbox.focus();
+        updateFullscreenButton();
     }
 
     function closeLightbox() {
@@ -96,64 +98,96 @@ window.addEventListener("DOMContentLoaded", () => {
             document.exitFullscreen().catch(() => {});
         }
 
-        lightbox.classList.remove("active");
-        lightbox.setAttribute("aria-hidden", "true");
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('lightbox-open');
+
         if (lightboxImage) {
-            lightboxImage.src = "";
+            lightboxImage.src = '';
         }
+
         if (pageHeader) {
             pageHeader.classList.remove('hidden-during-lightbox');
         }
     }
 
+    function updateFullscreenButton() {
+        if (!fullscreenButton || !lightbox) return;
+
+        const isFullscreen = document.fullscreenElement === lightbox;
+        fullscreenButton.textContent = isFullscreen ? '⤡' : '⤢';
+        fullscreenButton.setAttribute('aria-label', isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen');
+    }
+
+    function toggleFullscreen() {
+        if (!lightbox) return;
+
+        if (document.fullscreenElement === lightbox) {
+            document.exitFullscreen().catch(() => {});
+            return;
+        }
+
+        if (lightbox.requestFullscreen) {
+            lightbox.requestFullscreen().catch(() => {});
+        } else if (lightbox.webkitRequestFullscreen) {
+            lightbox.webkitRequestFullscreen();
+        }
+    }
+
     slides.forEach((img, index) => {
-        img.addEventListener("click", () => openLightbox(index));
+        img.addEventListener('click', () => openLightbox(index));
     });
 
     if (closeButton) {
-        closeButton.addEventListener("click", closeLightbox);
+        closeButton.addEventListener('click', closeLightbox);
     }
+
     if (prevButton) {
-        prevButton.addEventListener("click", (event) => {
+        prevButton.addEventListener('click', (event) => {
             event.stopPropagation();
             openLightbox((currentSlide - 1 + slides.length) % slides.length);
         });
     }
+
     if (nextButton) {
-        nextButton.addEventListener("click", (event) => {
+        nextButton.addEventListener('click', (event) => {
             event.stopPropagation();
             openLightbox((currentSlide + 1) % slides.length);
         });
     }
 
     if (fullscreenButton) {
-        fullscreenButton.addEventListener("click", (event) => {
+        fullscreenButton.addEventListener('click', (event) => {
             event.stopPropagation();
             toggleFullscreen();
         });
     }
 
     if (lightbox) {
-        lightbox.addEventListener("click", (event) => {
+        lightbox.addEventListener('click', (event) => {
             if (event.target === lightbox) {
                 closeLightbox();
             }
         });
 
-        window.addEventListener("keydown", (event) => {
-            if (!lightbox.classList.contains("active")) return;
+        window.addEventListener('keydown', (event) => {
+            if (!lightbox.classList.contains('active')) return;
 
-            if (event.key === "Escape") {
+            if (event.key === 'Escape') {
                 closeLightbox();
             }
-            if (event.key === "ArrowLeft") {
+            if (event.key === 'ArrowLeft') {
                 openLightbox((currentSlide - 1 + slides.length) % slides.length);
             }
-            if (event.key === "ArrowRight") {
+            if (event.key === 'ArrowRight') {
                 openLightbox((currentSlide + 1) % slides.length);
             }
+            if (event.key === 'f' || event.key === 'F') {
+                toggleFullscreen();
+            }
         });
+
+        document.addEventListener('fullscreenchange', updateFullscreenButton);
     }
 
     showSlide(currentSlide);
@@ -169,6 +203,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     // ---------- CONTACT FORM INIT ----------
     const contactForm = document.getElementById('contact-form');
+
     if (contactForm) {
         const statusDiv = document.getElementById('form-status');
 
@@ -202,23 +237,18 @@ window.addEventListener("DOMContentLoaded", () => {
             formData.append(ENTRY_MESSAGE, message);
 
             try {
-                // Send to Google Forms
-                await fetch(
-                    `https://docs.google.com/forms/d/${FORM_ID}/formResponse`,
-                    {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/x-www-form-urlencoded',
-                        },
-                        body: formData.toString(),
-                        mode: 'no-cors'
-                    }
-                );
+                await fetch(`https://docs.google.com/forms/d/${FORM_ID}/formResponse`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: formData.toString(),
+                    mode: 'no-cors',
+                });
 
                 statusDiv.textContent = 'Message sent successfully! I\'ll get back to you soon.';
                 statusDiv.style.color = 'white';
                 contactForm.reset();
-
             } catch (error) {
                 statusDiv.textContent = 'Failed to send message. Please try again.';
                 statusDiv.style.color = 'white';
@@ -227,3 +257,47 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+
+// ============================================
+// LAST UPDATED FUNCTION
+// ============================================
+
+(function() {
+    function formatDate(d) {
+        return d.toLocaleString(undefined, {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit',
+        });
+    }
+
+    const el = document.getElementById('last-updated');
+    if (!el) return;
+
+    const lm = document.lastModified;
+    if (lm && lm !== '0' && lm !== '') {
+        const dt = new Date(lm);
+        if (!isNaN(dt)) {
+            el.textContent = 'Last updated: ' + formatDate(dt);
+            return;
+        }
+    }
+
+    fetch(location.href, { method: 'HEAD' })
+        .then((res) => {
+            const h = res.headers.get('last-modified') || res.headers.get('Last-Modified');
+            if (h) {
+                const dt = new Date(h);
+                if (!isNaN(dt)) {
+                    el.textContent = 'Last updated: ' + formatDate(dt);
+                    return;
+                }
+            }
+            el.textContent = 'Last updated: (unknown) — update manually';
+        })
+        .catch(() => {
+            el.textContent = 'Last updated: (unknown) — update manually';
+        });
+})();

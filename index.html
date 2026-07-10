@@ -217,29 +217,6 @@
         <p>Maker • Builder • Designer • Learner</p>
         <p id="last-updated">Last updated: checking…</p>
     </footer>
-
-    <script>
-        (function(){
-            function formatDate(d){
-                return d.toLocaleString(undefined, {year:'numeric', month:'long', day:'numeric', hour:'2-digit', minute:'2-digit'});
-            }
-            var el = document.getElementById('last-updated');
-            if(!el) return;
-            var lm = document.lastModified;
-            if(lm && lm !== '0' && lm !== ''){
-                var dt = new Date(lm);
-                if(!isNaN(dt)) { el.textContent = 'Last updated: ' + formatDate(dt); return; }
-            }
-            fetch(location.href, {method: 'HEAD'}).then(function(res){
-                var h = res.headers.get('last-modified') || res.headers.get('Last-Modified');
-                if(h){
-                    var dt = new Date(h);
-                    if(!isNaN(dt)){ el.textContent = 'Last updated: ' + formatDate(dt); return; }
-                }
-                el.textContent = 'Last updated: (unknown) — update manually';
-            }).catch(function(){ el.textContent = 'Last updated: (unknown) — update manually'; });
-        })();
-    </script>
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
