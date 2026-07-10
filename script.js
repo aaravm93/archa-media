@@ -87,8 +87,6 @@ window.addEventListener("DOMContentLoaded", () => {
         if (pageHeader) {
             pageHeader.classList.add('hidden-during-lightbox');
         }
-        lightbox.focus();
-        updateFullscreenButton();
     }
 
     function closeLightbox() {
@@ -107,30 +105,6 @@ window.addEventListener("DOMContentLoaded", () => {
         if (pageHeader) {
             pageHeader.classList.remove('hidden-during-lightbox');
         }
-    }
-
-    function updateFullscreenButton() {
-        if (!fullscreenButton || !lightbox) return;
-        const isFullscreen = document.fullscreenElement === lightbox;
-        fullscreenButton.textContent = isFullscreen ? '⤡' : '⤢';
-        fullscreenButton.setAttribute('aria-label', isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen');
-    }
-
-    function toggleFullscreen() {
-        if (!lightbox) return;
-        if (document.fullscreenElement === lightbox) {
-            document.exitFullscreen().catch(() => {});
-            return;
-        }
-        if (lightbox.requestFullscreen) {
-            lightbox.requestFullscreen().catch(() => {});
-        } else if (lightbox.webkitRequestFullscreen) {
-            lightbox.webkitRequestFullscreen();
-        }
-    }
-
-    if (lightbox) {
-        document.addEventListener('fullscreenchange', updateFullscreenButton);
     }
 
     slides.forEach((img, index) => {
@@ -178,9 +152,6 @@ window.addEventListener("DOMContentLoaded", () => {
             }
             if (event.key === "ArrowRight") {
                 openLightbox((currentSlide + 1) % slides.length);
-            }
-            if (event.key === "f" || event.key === "F") {
-                toggleFullscreen();
             }
         });
     }
