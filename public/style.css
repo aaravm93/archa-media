@@ -571,6 +571,11 @@ body.lightbox-open {
     overflow: hidden;
 }
 
+.hidden-during-lightbox {
+    opacity: 0;
+    pointer-events: none;
+}
+
 section,
 .wrap {
     padding: 60px 20px;
@@ -791,6 +796,29 @@ section h2 a:hover {
 
 .lightbox-overlay.active {
     display: flex;
+}
+
+.lightbox-fullscreen {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    border: var(--border-width) solid var(--border-soft);
+    background: rgba(31, 0, 33, 0.32);
+    color: var(--color-light);
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    font-size: 1.25rem;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 1000;
+}
+
+.lightbox-fullscreen:hover {
+    transform: scale(1.05);
+    background: rgba(117, 16, 6, 0.82);
 }
 
 .lightbox-image {

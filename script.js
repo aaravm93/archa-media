@@ -56,6 +56,7 @@ window.addEventListener("DOMContentLoaded", () => {
     let closeButton = null;
     let prevButton = null;
     let nextButton = null;
+    let fullscreenButton = null;
 
     if (lightbox) {
         lightboxImage = lightbox.querySelector(".lightbox-image");
@@ -63,6 +64,7 @@ window.addEventListener("DOMContentLoaded", () => {
         closeButton = lightbox.querySelector(".lightbox-close");
         prevButton = lightbox.querySelector(".lightbox-prev");
         nextButton = lightbox.querySelector(".lightbox-next");
+        fullscreenButton = lightbox.querySelector(".lightbox-fullscreen");
     }
 
     function updateLightboxImage(index) {
@@ -85,10 +87,16 @@ window.addEventListener("DOMContentLoaded", () => {
         if (pageHeader) {
             pageHeader.classList.add('hidden-during-lightbox');
         }
+        lightbox.focus();
+        updateFullscreenButton();
     }
 
     function closeLightbox() {
         if (!lightbox) return;
+
+        if (document.fullscreenElement === lightbox) {
+            document.exitFullscreen().catch(() => {});
+        }
 
         lightbox.classList.remove("active");
         lightbox.setAttribute("aria-hidden", "true");
@@ -99,6 +107,30 @@ window.addEventListener("DOMContentLoaded", () => {
         if (pageHeader) {
             pageHeader.classList.remove('hidden-during-lightbox');
         }
+    }
+
+    function updateFullscreenButton() {
+        if (!fullscreenButton || !lightbox) return;
+        const isFullscreen = document.fullscreenElement === lightbox;
+        fullscreenButton.textContent = isFullscreen ? '⤡' : '⤢';
+        fullscreenButton.setAttribute('aria-label', isFullscreen ? 'Exit fullscreen' : 'Enter fullscreen');
+    }
+
+    function toggleFullscreen() {
+        if (!lightbox) return;
+        if (document.fullscreenElement === lightbox) {
+            document.exitFullscreen().catch(() => {});
+            return;
+        }
+        if (lightbox.requestFullscreen) {
+            lightbox.requestFullscreen().catch(() => {});
+        } else if (lightbox.webkitRequestFullscreen) {
+            lightbox.webkitRequestFullscreen();
+        }
+    }
+
+    if (lightbox) {
+        document.addEventListener('fullscreenchange', updateFullscreenButton);
     }
 
     slides.forEach((img, index) => {
@@ -121,6 +153,13 @@ window.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    if (fullscreenButton) {
+        fullscreenButton.addEventListener("click", (event) => {
+            event.stopPropagation();
+            toggleFullscreen();
+        });
+    }
+
     if (lightbox) {
         lightbox.addEventListener("click", (event) => {
             if (event.target === lightbox) {
@@ -139,6 +178,9 @@ window.addEventListener("DOMContentLoaded", () => {
             }
             if (event.key === "ArrowRight") {
                 openLightbox((currentSlide + 1) % slides.length);
+            }
+            if (event.key === "f" || event.key === "F") {
+                toggleFullscreen();
             }
         });
     }
