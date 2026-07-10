@@ -1,6 +1,9 @@
 import { defineConfig } from 'vite';
 
 export default defineConfig({
+    // Add this base path for GitHub Pages
+    base: '/archa-media/',
+    
     build: {
         outDir: 'dist',
         rollupOptions: {
@@ -20,5 +23,5 @@ export default defineConfig({
     server: {
         open: true
     },
-    publicDir: 'public'  // ← ADD THIS LINE
+    publicDir: 'public'
 });
